@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "dgSpecHash": "RVVoUBDUXh+y+RAQ3TMyC7Pl8ZzNQeQzoV9IoFsFgf2nVowuaFmchOPc4Ct7F/Wj4/mAOwVxMQDEoX4OwYPTkw==",
+  "success": true,
+  "projectFilePath": "C:\\Exercise Files\\WPF\\Ex_Files_WPF_1_Desktop\\Exercise Files\\02_CreateApp\\02_Create\\ClassLibrary2\\ExcelProject\\ExcelProject.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Raghu Ramani\\.nuget\\packages\\enums.net\\4.0.0\\enums.net.4.0.0.nupkg.sha512",
+    "C:\\Users\\Raghu Ramani\\.nuget\\packages\\mathnet.numerics.signed\\4.15.0\\mathnet.numerics.signed.4.15.0.nupkg.sha512",
+    "C:\\Users\\Raghu Ramani\\.nuget\\packages\\microsoft.io.recyclablememorystream\\2.2.0\\microsoft.io.recyclablememorystream.2.2.0.nupkg.sha512",
+    "C:\\Users\\Raghu Ramani\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
+    "C:\\Users\\Raghu Ramani\\.nuget\\packages\\npoi\\2.6.0\\npoi.2.6.0.nupkg.sha512",
+    "C:\\Users\\Raghu Ramani\\.nuget\\packages\\portable.bouncycastle\\1.9.0\\portable.bouncycastle.1.9.0.nupkg.sha512",
+    "C:\\Users\\Raghu Ramani\\.nuget\\packages\\sharpziplib\\1.3.3\\sharpziplib.1.3.3.nupkg.sha512",
+    "C:\\Users\\Raghu Ramani\\.nuget\\packages\\sixlabors.fonts\\1.0.0-beta18\\sixlabors.fonts.1.0.0-beta18.nupkg.sha512",
+    "C:\\Users\\Raghu Ramani\\.nuget\\packages\\sixlabors.imagesharp\\2.1.3\\sixlabors.imagesharp.2.1.3.nupkg.sha512",
+    "C:\\Users\\Raghu Ramani\\.nuget\\packages\\system.configuration.configurationmanager\\7.0.0\\system.configuration.configurationmanager.7.0.0.nupkg.sha512",
+    "C:\\Users\\Raghu Ramani\\.nuget\\packages\\system.data.oledb\\7.0.0\\system.data.oledb.7.0.0.nupkg.sha512",
+    "C:\\Users\\Raghu Ramani\\.nuget\\packages\\system.diagnostics.performancecounter\\7.0.0\\system.diagnostics.performancecounter.7.0.0.nupkg.sha512",
+    "C:\\Users\\Raghu Ramani\\.nuget\\packages\\system.drawing.common\\7.0.0\\system.drawing.common.7.0.0.nupkg.sha512",
+    "C:\\Users\\Raghu Ramani\\.nuget\\packages\\system.formats.asn1\\6.0.0\\system.formats.asn1.6.0.0.nupkg.sha512",
+    "C:\\Users\\Raghu Ramani\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\Raghu Ramani\\.nuget\\packages\\system.security.accesscontrol\\6.0.0\\system.security.accesscontrol.6.0.0.nupkg.sha512",
+    "C:\\Users\\Raghu Ramani\\.nuget\\packages\\system.security.cryptography.pkcs\\6.0.1\\system.security.cryptography.pkcs.6.0.1.nupkg.sha512",
+    "C:\\Users\\Raghu Ramani\\.nuget\\packages\\system.security.cryptography.protecteddata\\7.0.0\\system.security.cryptography.protecteddata.7.0.0.nupkg.sha512",
+    "C:\\Users\\Raghu Ramani\\.nuget\\packages\\system.security.cryptography.xml\\6.0.1\\system.security.cryptography.xml.6.0.1.nupkg.sha512",
+    "C:\\Users\\Raghu Ramani\\.nuget\\packages\\system.security.permissions\\7.0.0\\system.security.permissions.7.0.0.nupkg.sha512",
+    "C:\\Users\\Raghu Ramani\\.nuget\\packages\\system.text.encoding.codepages\\6.0.0\\system.text.encoding.codepages.6.0.0.nupkg.sha512",
+    "C:\\Users\\Raghu Ramani\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
