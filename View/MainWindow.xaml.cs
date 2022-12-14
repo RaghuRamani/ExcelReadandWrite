@@ -1,6 +1,9 @@
-﻿using Microsoft.Win32;
+﻿using ExcelProject.ViewModel;
+using Microsoft.Win32;
+//using NUnit.Framework.Internal.Execution;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static ExcelProject.Prism.EventSystem;
 
 namespace ExcelProject
 {
@@ -24,22 +28,11 @@ namespace ExcelProject
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new MainWindowViewModel(Event.EventInstance.EventAggregator);
             
-        }
-
-        private void btnsync_Click_1(object sender, RoutedEventArgs e)
-        {
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
-
-        private void dgEmp_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

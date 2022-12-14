@@ -4,62 +4,116 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExcelProject.ViewModel"
+        xmlns:system="clr-namespace:Prism.Events;assembly=Prism"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="450"
-        Width="800">
+        Height="800"
+        Background="Beige"
+        Width="1000">
 
-  <Window.Resources>
-    <local:MainWindowViewModel x:Key="vm" />
+  <!--<Window.Resources>
+
+    <local:MainWindowViewModel x:Key="v" />
   </Window.Resources>
-  <Grid DataContext="{Binding Source={StaticResource vm}}">
-
+  <Grid DataContext="{Binding Source={StaticResource v}}">
+   -->
+  <Grid>
+    <!--  <DataGrid x:Name=""
+              AutoGenerateColumns="False"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch"
+              ItemsSource="{Binding Employee}"
+              IsReadOnly="True"
+              SelectionMode="Single">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="Employee No."
+                            Binding="{Binding ElementName=EmpNo}" />
+        <DataGridTextColumn Header="Employee Name"
+                            Binding="{Binding }" />
+        <DataGridTextColumn Header="Postcode"
+                            Binding="{Binding Postcode}" />
+        <DataGridTextColumn Header="Gemeente"
+                            Binding="{Binding Gemeente}" />
+        <DataGridTextColumn Header="BTW"
+                            Binding="{Binding BTW}" />
+      </DataGrid.Columns>
+    </DataGrid>-->
     <Grid.RowDefinitions>
       <RowDefinition Height="272*" />
       <RowDefinition Height="71*" />
     </Grid.RowDefinitions>
-    <Button Content="Browse"
-            Name="btnsync"
-            FontSize="40"
-            FontFamily="Times New Roman"
-            FontWeight="ExtraBold"
-            Click="btnsync_Click_1"
-            Margin="549,131,7,144"
-            Command="{Binding ShowCommand}" />
-    <DataGrid Name="dgEmp"
-              ColumnWidth="*"
-              DataGrid.AutoGenerateColumns="true"
-              ItemsSource="{Binding dataTable.DefaultView}"
-              Margin="12,8,261,9">
-    </DataGrid>
     <TextBox HorizontalAlignment="Left"
-             Margin="18,10,0,0"
+             Margin="23,21,0,0"
+             Background="AliceBlue"
              TextWrapping="Wrap"
              VerticalAlignment="Top"
-             Width="387"
+             Width="834"
              Text="{Binding fileName}"
-             Height="28"
-             Grid.Row="1" />
+             Height="28" />
     <Button Content="Import"
             HorizontalAlignment="Left"
-            FontSize="40"
+            FontSize="20"
+            Background="AliceBlue"
             FontFamily="Times New Roman"
             FontWeight="ExtraBold"
-            Margin="552,216,0,0"
+            Margin="869,112,0,0"
             VerticalAlignment="Top"
-            Height="60"
-            Width="243"
+            Height="39"
+            Width="118"
             Command="{Binding ImportCommand}" />
     <Button Content="Add Record"
             HorizontalAlignment="Left"
-            Margin="550,69,0,0"
-            FontSize="40"
+            Margin="868,158,0,0"
+            FontSize="20"
+            Background="AliceBlue"
             Command="{Binding AddCommand}"
             FontFamily="Times New Roman"
             FontWeight="ExtraBold"
             VerticalAlignment="Top"
-            Height="50"
-            Width="247" />
+            Height="40"
+            Width="120" />
+    <Button Content="Browse"
+            HorizontalAlignment="Left"
+            Background="AliceBlue"
+            Margin="867,66,0,0"
+            FontSize="20"
+            FontFamily="Times New Roman"
+            FontWeight="ExtraBold"
+            Command="{Binding ShowCommand}"
+            VerticalAlignment="Top"
+            Height="39"
+            Width="120" />
+    <DataGrid Background="Beige"
+              Margin="30,62,145,41"
+              Name="DataGrid"
+              ItemsSource="{Binding dataTable.DefaultView}"
+              AutoGenerateColumns="False"
+              Grid.RowSpan="2">
+      <DataGrid.Columns>
+
+        <DataGridTextColumn Header="Employee No."
+                            Binding="{Binding EmpNo}" />
+        <DataGridTextColumn Header="Employee Name"
+                            Binding="{Binding  EmpName}" />
+        <DataGridTextColumn Header="Salary"
+                            Binding="{Binding Salary}" />
+        <DataGridTextColumn Header="Department Name"
+                            Binding="{Binding DeptName}" />
+
+      </DataGrid.Columns>
+    </DataGrid>
+    <Button Content="Export"
+            HorizontalAlignment="Left"
+            Margin="868,19,0,0"
+            Background="AliceBlue"
+            FontSize="20"
+            Command="{Binding ExportCommand}"
+            FontFamily="Times New Roman"
+            FontWeight="ExtraBold"
+            VerticalAlignment="Top"
+            Height="39"
+            Width="119" />
+
 
   </Grid>
 </Window>

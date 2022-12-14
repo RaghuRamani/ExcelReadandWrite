@@ -21,18 +21,49 @@ using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using System.IO;
 using System.Collections;
+using NPOI.SS.Formula.Functions;
+using NPOI.Util;
+using NPOI.SS.Formula.Atp;
+using Prism.Events;
+using System.Windows.Controls;
+using NPOI.SS.Formula.Eval;
+using NPOI.SS.Formula;
+using Prism.Services.Dialogs;
+using excelfile= Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Excel;
+using DataTable = System.Data.DataTable;
 
 namespace ExcelProject.ViewModel;
 
 public class MainWindowViewModel : INotifyPropertyChanged
 {
+    protected readonly IEventAggregator _eventAggregator;
+    private DataRow _row;
     public ICommand ShowCommand
     {
         get;
         set;
 
     }
+    public ICommand ExportCommand
+    {
+        get;
+        set;
+
+    }
+    /*public DataRow row
+    {
+        get;
+        set;
+    }*/
+
     public ICommand AddCommand
+    {
+        get;
+        set;
+
+    }
+    public ICommand EnterCommand
     {
         get;
         set;
@@ -43,6 +74,24 @@ public class MainWindowViewModel : INotifyPropertyChanged
     {
         get;
         set;
+    }
+    public Employee Employee
+    {
+        get;
+        set;
+
+    }
+    public DataRow row
+    {
+        get
+        {
+            return _row;
+        }
+        set
+        {
+            _row = value;
+            OnPropertyChanged("row");
+        }
     }
     public DataTable _dataTable;
     public DataTable dataTable
@@ -70,20 +119,11 @@ public class MainWindowViewModel : INotifyPropertyChanged
         set
         {
             _addEmployee = value;
-            
+
         }
     }
-    public MainWindowViewModel()
-    {
-        ShowCommand = new RelayCommand(OnShow, () => canExecuteOnShow);
-        ImportCommand = new RelayCommand(Import, () => canExecuteImport);
-        AddCommand = new RelayCommand(Add, () => canExecuteAdd);
-    }
-    public bool canExecuteOnShow => true;
-    public bool canExecuteImport => true;
-    public bool canExecuteAdd => true;
     private string _fileName;
-
+    private string _filePath;
     public string fileName
     {
 
@@ -97,23 +137,57 @@ public class MainWindowViewModel : INotifyPropertyChanged
             OnPropertyChanged("fileName");
         }
     }
+    public string filePath
+    {
+
+        get
+        {
+            return _filePath;
+        }
+        set
+        {
+            _filePath = value;
+            OnPropertyChanged("filePath");
+        }
+    }
+    public MainWindowViewModel(IEventAggregator eventAggregator)
+    {
+        this._eventAggregator = eventAggregator;
+        this._eventAggregator.GetEvent<EmployeeTransferEvent>().Subscribe((_employee) => { enter(this.Employee = _employee);  });
+        ShowCommand = new RelayCommand(OnShow, () => canExecuteOnShow);
+        ImportCommand = new RelayCommand(Import, () => canExecuteImport);
+        AddCommand = new RelayCommand(Add, () => canExecuteAdd);
+        ExportCommand = new RelayCommand(export, () => canExecuteExport);
+
+    }
+
+    public bool canExecute => true;
+    public bool canExecuteOnShow => true;
+    public bool canExecuteImport => true;
+    public bool canExecuteAdd => true;
+    public bool canExecuteEnter => true;
+    public bool canExecuteExport => true;
+
+
+
+
     private void OnShow()
     {
         var dialog = new Microsoft.Win32.OpenFileDialog();
-        dialog.Filter = "Excel documents (.xls)|*.xls"; 
+        dialog.Filter = "Excel documents (.xls)|*.xls";
 
 
-        
+
         bool? result = dialog.ShowDialog();
 
-     
+
         if (result == true)
         {
-            
+
             fileName = dialog.FileName;
         }
     }
-    public bool canExecute => true;
+
 
     public event PropertyChangedEventHandler PropertyChanged;
 
@@ -133,34 +207,196 @@ public class MainWindowViewModel : INotifyPropertyChanged
          DataTable dt = ds.Tables[0];
 
      }*/
-  
+    String Sheet_name;
     public void Import()
     {
-        HSSFWorkbook wb;
-        HSSFSheet sh;
-        String Sheet_name;
-
-        using (var fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+        try
         {
-            wb = new HSSFWorkbook(fs);
+            HSSFWorkbook wb;
+            HSSFSheet sh;
+            
 
-            Sheet_name = wb.GetSheetAt(0).SheetName;  
+            using (var fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+            {
+                wb = new HSSFWorkbook(fs);
+
+                Sheet_name = wb.GetSheetAt(0).SheetName;
+            }
+            sh = (HSSFSheet)wb.GetSheet(Sheet_name);
+            dataTable = new DataTable(sh.SheetName);
+            var headerRow = sh.GetRow(0);
+            foreach (var headerCell in headerRow)
+            {
+                dataTable.Columns.Add(headerCell.ToString());
+            }
+            for (int i = 1; i < sh.PhysicalNumberOfRows; i++)
+            {
+                var sheetRow = sh.GetRow(i);
+                if (sh.GetRow(0) == null)
+                {
+                    throw new Exception("Blank File Selected!!");
+                }
+                var dtRow = dataTable.NewRow();
+                dtRow.ItemArray = dataTable.Columns
+                    .Cast<DataColumn>()
+                    .Select(c => sheetRow.GetCell(c.Ordinal, MissingCellPolicy.CREATE_NULL_AS_BLANK).ToString())
+                    .ToArray();
+                dataTable.Rows.Add(dtRow);
+
+            }
+
         }
-      
-        
-        
+       
+        catch (Exception exception)
+        {
 
-        
-        sh = (HSSFSheet)wb.GetSheet(Sheet_name);
-        dataTable = new DataTable(sh.SheetName);
-
+            MessageBox.Show(exception.ToString());
+        }
     }
-
+        
+        
     
+
+
 
     public void Add()
     {
         AddEmployee add = new AddEmployee();
         add.Show();
+
+
+    }
+
+    /* public void save()
+    {
+         row = dataTable.NewRow();
+         row["EmpNo"] = Employee.EmpNo;
+         row["EmpName"] = Employee.EmpName;
+         row["Salary"] = Employee.Salary;
+         row["DeptName"] = Employee.DeptName;
+         dataTable.Rows.Add(row);
+    }
+  */
+    public void enter(object e)
+    {   Employee employee= (Employee)e;
+        row = dataTable.NewRow();
+        row["EmpNo"] = Employee.EmpNo;
+        row["EmpName"] = Employee.EmpName;
+        row["Salary"] = Employee.Salary;
+        row["DeptName"] = Employee.DeptName;
+        dataTable.Rows.Add(row);
+    }
+    /* public void export()
+     {
+         SaveFileDialog save = new SaveFileDialog();
+         save.Filter = "Excel File (*.xls)|*.xls|Show All Files (*.*)|*.*";
+         bool? result = save.ShowDialog();
+
+
+         if (result == true)
+         {
+
+             filePath = save.FileName;
+         }
+         DataTable dt = new DataTable();
+         DataTable d = new DataTable();
+
+         dt = dataTable.Copy();
+         var f= new FileStream(filePath, FileMode.Append, FileAccess.Write);
+         using (f)
+         {
+
+             IWorkbook workbook = new HSSFWorkbook();
+             ISheet excelSheet = workbook.CreateSheet(dt.TableName);
+             List<string> columns = new List<string>();
+             IRow row = excelSheet.CreateRow(0);
+             int columnIndex = 0;
+
+             foreach (System.Data.DataColumn column in dt.Columns)
+             {
+                 columns.Add(column.ColumnName);
+                 row.CreateCell(columnIndex).SetCellValue(column.ColumnName);
+                 columnIndex++;
+             }
+
+             int rowIndex = 1;
+             foreach (DataRow dsrow in dt.Rows)
+             {
+                 row = excelSheet.CreateRow(rowIndex);
+                 int cellIndex = 0;
+                 foreach (String col in columns)
+                 {
+                     row.CreateCell(cellIndex).SetCellValue(dsrow[col].ToString());
+                     cellIndex++;
+
+                 }
+
+                 rowIndex++;
+
+             }
+
+             workbook.Write(f,true);
+         }
+     }
+    */
+    public void export()
+    {
+        excelfile.Application excel;
+        excelfile.Workbook excelworkBook;
+        excelfile.Worksheet excelSheet;
+        excelfile.Range excelCellrange;
+
+        try
+        {
+            excel = new excelfile.Application();
+            excel.Visible = false;
+            excel.DisplayAlerts = false;
+
+            excelworkBook = excel.Workbooks.Add(Type.Missing);
+
+            excelSheet = (excelfile.Worksheet)excelworkBook.ActiveSheet;
+            excelSheet.Name = Sheet_name;
+
+            int rowcount = 1;
+            
+
+            foreach (DataRow datarow in dataTable.Rows)
+            {
+                rowcount += 1;
+
+                for (int i = 1; i <= dataTable.Columns.Count; i++)
+                {
+                    if (rowcount == 3)
+                    {
+                        excelSheet.Cells[1, i] = dataTable.Columns[i - 1].ColumnName;
+                    }
+                   
+                    excelSheet.Cells[rowcount, i] = datarow[i-1].ToString();
+                }
+
+
+            }
+
+
+            SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "Excel File (*.xls)|*.xls|Show All Files (*.*)|*.*";
+            bool? result = save.ShowDialog();
+
+
+            if (result == true)
+            {
+
+                filePath = save.FileName;
+            }
+            excelworkBook.SaveAs(filePath); ;
+            excelworkBook.Close();
+            excel.Quit();
+            
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message);
+            
+        }
     }
 }

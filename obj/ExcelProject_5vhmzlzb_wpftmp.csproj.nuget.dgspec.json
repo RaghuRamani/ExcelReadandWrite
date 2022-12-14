@@ -1,0 +1,88 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Exercise Files\\WPF\\Ex_Files_WPF_1_Desktop\\Exercise Files\\02_CreateApp\\02_Create\\ClassLibrary2\\ExcelProject\\ExcelProject.csproj": {}
+  },
+  "projects": {
+    "C:\\Exercise Files\\WPF\\Ex_Files_WPF_1_Desktop\\Exercise Files\\02_CreateApp\\02_Create\\ClassLibrary2\\ExcelProject\\ExcelProject.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Exercise Files\\WPF\\Ex_Files_WPF_1_Desktop\\Exercise Files\\02_CreateApp\\02_Create\\ClassLibrary2\\ExcelProject\\ExcelProject.csproj",
+        "projectName": "ExcelProject",
+        "projectPath": "C:\\Exercise Files\\WPF\\Ex_Files_WPF_1_Desktop\\Exercise Files\\02_CreateApp\\02_Create\\ClassLibrary2\\ExcelProject\\ExcelProject.csproj",
+        "packagesPath": "C:\\Users\\Raghu Ramani\\.nuget\\packages\\",
+        "outputPath": "C:\\Exercise Files\\WPF\\Ex_Files_WPF_1_Desktop\\Exercise Files\\02_CreateApp\\02_Create\\ClassLibrary2\\ExcelProject\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Raghu Ramani\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0-windows7.0": {
+            "targetAlias": "net6.0-windows",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "NPOI": {
+              "target": "Package",
+              "version": "[2.6.0, )"
+            },
+            "NPOI.Excel": {
+              "target": "Package",
+              "version": "[2.1.1, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.3, )"
+            },
+            "Prism.Wpf": {
+              "target": "Package",
+              "version": "[8.1.97, )"
+            },
+            "System.Data.OleDb": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
