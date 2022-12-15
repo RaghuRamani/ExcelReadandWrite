@@ -32,7 +32,9 @@ using Prism.Services.Dialogs;
 using excelfile= Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
 using DataTable = System.Data.DataTable;
-
+using static ExcelProject.Model.Mail;
+using System.Xml.Linq;
+using Outlook = Microsoft.Office.Interop.Outlook;
 namespace ExcelProject.ViewModel;
 
 public class MainWindowViewModel : INotifyPropertyChanged
@@ -46,6 +48,12 @@ public class MainWindowViewModel : INotifyPropertyChanged
 
     }
     public ICommand ExportCommand
+    {
+        get;
+        set;
+
+    }
+    public ICommand MailCommand
     {
         get;
         set;
@@ -76,6 +84,12 @@ public class MainWindowViewModel : INotifyPropertyChanged
         set;
     }
     public Employee Employee
+    {
+        get;
+        set;
+
+    }
+    public Mail Mail
     {
         get;
         set;
@@ -154,11 +168,12 @@ public class MainWindowViewModel : INotifyPropertyChanged
     {
         this._eventAggregator = eventAggregator;
         this._eventAggregator.GetEvent<EmployeeTransferEvent>().Subscribe((_employee) => { enter(this.Employee = _employee);  });
+        this._eventAggregator.GetEvent<MailTransferEvent>().Subscribe((_mail) => { Send(this.Mail = _mail); });
         ShowCommand = new RelayCommand(OnShow, () => canExecuteOnShow);
         ImportCommand = new RelayCommand(Import, () => canExecuteImport);
         AddCommand = new RelayCommand(Add, () => canExecuteAdd);
         ExportCommand = new RelayCommand(export, () => canExecuteExport);
-
+        MailCommand = new RelayCommand(MailTo, () => canExecuteMail);
     }
 
     public bool canExecute => true;
@@ -167,6 +182,8 @@ public class MainWindowViewModel : INotifyPropertyChanged
     public bool canExecuteAdd => true;
     public bool canExecuteEnter => true;
     public bool canExecuteExport => true;
+    public bool canExecuteMail => true;
+
 
 
 
@@ -397,6 +414,74 @@ public class MainWindowViewModel : INotifyPropertyChanged
         {
             MessageBox.Show(ex.Message);
             
+        }
+    }
+    public void MailTo()
+    {
+        Email email = new Email();
+        email.Show();
+    }
+   /* public void Send(object m)
+    {
+        Mail mail = (Mail)m;
+        try
+        {
+            Outlook.Application outlookApp = new Outlook.Application();
+            Outlook.MailItem mailItem = (Outlook.MailItem)outlookApp.CreateItem(Outlook.OlItemType.olMailItem);
+
+            mailItem.Subject = Mail.Subject;
+            mailItem.To = Mail.MailTo.Replace(',', ';');
+
+
+            if (!string.IsNullOrEmpty(Mail.cc))
+                mailItem.CC = Mail.cc;
+
+            mailItem.Body = Mail.MailMessage;
+            mailItem.Importance = Outlook.OlImportance.olImportanceHigh;
+
+            mailItem.Send();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+        }
+    }*/
+    public void Send(object m)
+    {
+        Mail mail = (Mail)m;
+        try
+        {
+            Outlook.Application outlookApp = new Outlook.Application();
+            Outlook.MailItem mailItem = (Outlook.MailItem)outlookApp.CreateItem(Outlook.OlItemType.olMailItem);
+
+            mailItem.Subject = Mail.Subject;
+            mailItem.To = Mail.MailTo.Replace(',', ';');
+            OpenFileDialog attachment = new OpenFileDialog();
+
+            attachment.Title = "Select a file to send";
+            attachment.ShowDialog();
+
+            if (attachment.FileName.Length > 0)
+            {
+                Mail.Attachments.Add(
+                    attachment.FileName,
+                    Outlook.OlAttachmentType.olByValue,
+                    1,
+                    attachment.FileName);
+                
+            }
+
+            if (!string.IsNullOrEmpty(Mail.cc))
+                mailItem.CC = Mail.cc;
+
+            mailItem.Body = Mail.MailMessage;
+            mailItem.Importance = Outlook.OlImportance.olImportanceHigh;
+
+           
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
         }
     }
 }

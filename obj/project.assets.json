@@ -50,6 +50,15 @@
           "lib/netstandard1.0/_._": {}
         }
       },
+      "Microsoft.Office.Interop.Outlook/15.0.4797.1003": {
+        "type": "package",
+        "compile": {
+          "lib/net20/Microsoft.Office.Interop.Outlook.dll": {}
+        },
+        "runtime": {
+          "lib/net20/Microsoft.Office.Interop.Outlook.dll": {}
+        }
+      },
       "Microsoft.Win32.SystemEvents/7.0.0": {
         "type": "package",
         "compile": {
@@ -672,6 +681,18 @@
         "microsoft.netcore.platforms.1.1.0.nupkg.sha512",
         "microsoft.netcore.platforms.nuspec",
         "runtime.json"
+      ]
+    },
+    "Microsoft.Office.Interop.Outlook/15.0.4797.1003": {
+      "sha512": "7tvZ8vtSemSxJxrarL/i3oYuha4ElXxvrjFfuWL0s5vmKVDHXjY72+Ed6S4xCPH+qDGEZYd49ObdGT7PC8BegQ==",
+      "type": "package",
+      "path": "microsoft.office.interop.outlook/15.0.4797.1003",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/Microsoft.Office.Interop.Outlook.dll",
+        "microsoft.office.interop.outlook.15.0.4797.1003.nupkg.sha512",
+        "microsoft.office.interop.outlook.nuspec"
       ]
     },
     "Microsoft.Win32.SystemEvents/7.0.0": {
@@ -1513,6 +1534,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
+      "Microsoft.Office.Interop.Outlook >= 15.0.4797.1003",
       "NPOI >= 2.6.0",
       "NPOI.Excel >= 2.1.1",
       "NUnit >= 3.13.3",
@@ -1560,6 +1582,10 @@
       "net6.0-windows7.0": {
         "targetAlias": "net6.0-windows",
         "dependencies": {
+          "Microsoft.Office.Interop.Outlook": {
+            "target": "Package",
+            "version": "[15.0.4797.1003, )"
+          },
           "NPOI": {
             "target": "Package",
             "version": "[2.6.0, )"
@@ -1609,6 +1635,16 @@
     }
   },
   "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.Office.Interop.Outlook 15.0.4797.1003' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.Office.Interop.Outlook",
+      "targetGraphs": [
+        "net6.0-windows7.0"
+      ]
+    },
     {
       "code": "NU1701",
       "level": "Warning",

@@ -31,6 +31,14 @@
         }
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},
+      "Microsoft.Office.Interop.Outlook/15.0.4797.1003": {
+        "runtime": {
+          "lib/net20/Microsoft.Office.Interop.Outlook.dll": {
+            "assemblyVersion": "15.0.0.0",
+            "fileVersion": "15.0.4797.1003"
+          }
+        }
+      },
       "Microsoft.Win32.SystemEvents/7.0.0": {
         "runtime": {
           "lib/net6.0/Microsoft.Win32.SystemEvents.dll": {
@@ -124,6 +132,25 @@
           "lib/netstandard2.0/nunit.framework.dll": {
             "assemblyVersion": "3.13.3.0",
             "fileVersion": "3.13.3.0"
+          }
+        }
+      },
+      "Office/12.0.0": {
+        "runtime": {
+          "lib/net40/Office.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.4518.1014"
+          }
+        }
+      },
+      "Office.Interop.Excel/12.0.0": {
+        "dependencies": {
+          "Office": "12.0.0"
+        },
+        "runtime": {
+          "lib/net40/Microsoft.Office.Interop.Excel.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.4518.1014"
           }
         }
       },
@@ -412,6 +439,13 @@
       "path": "microsoft.netcore.platforms/1.1.0",
       "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
     },
+    "Microsoft.Office.Interop.Outlook/15.0.4797.1003": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7tvZ8vtSemSxJxrarL/i3oYuha4ElXxvrjFfuWL0s5vmKVDHXjY72+Ed6S4xCPH+qDGEZYd49ObdGT7PC8BegQ==",
+      "path": "microsoft.office.interop.outlook/15.0.4797.1003",
+      "hashPath": "microsoft.office.interop.outlook.15.0.4797.1003.nupkg.sha512"
+    },
     "Microsoft.Win32.SystemEvents/7.0.0": {
       "type": "package",
       "serviceable": true,
@@ -453,6 +487,20 @@
       "sha512": "sha512-KNPDpls6EfHwC3+nnA67fh5wpxeLb3VLFAfLxrug6JMYDLHH6InaQIWR7Sc3y75d/9IKzMksH/gi08W7XWbmnQ==",
       "path": "nunit/3.13.3",
       "hashPath": "nunit.3.13.3.nupkg.sha512"
+    },
+    "Office/12.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PNnAY+I5vxcFhUFCXtYZ24va81pPAHUhjtXbeJN04KqDz+IzlmobWOHRatnqv1m0TvR1MWD5tQQB1UteZln6wQ==",
+      "path": "office/12.0.0",
+      "hashPath": "office.12.0.0.nupkg.sha512"
+    },
+    "Office.Interop.Excel/12.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VX0GLcRJTcyhvUI0YErPGd9d4szCIIgzeBfLrffDVGpcCaOIVuRaUTykSG+swwDlApSP0Rn4F+CUAByZfiodxA==",
+      "path": "office.interop.excel/12.0.0",
+      "hashPath": "office.interop.excel.12.0.0.nupkg.sha512"
     },
     "Portable.BouncyCastle/1.9.0": {
       "type": "package",

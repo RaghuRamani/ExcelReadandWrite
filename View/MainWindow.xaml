@@ -113,6 +113,17 @@
             VerticalAlignment="Top"
             Height="39"
             Width="119" />
+    <Button Content="Send Mail"
+            HorizontalAlignment="Left"
+            Margin="868,205,0,0"
+            FontSize="20"
+            Background="AliceBlue"
+            Command="{Binding MailCommand}"
+            FontFamily="Times New Roman"
+            FontWeight="ExtraBold"
+            VerticalAlignment="Top"
+            Height="40"
+            Width="120" />
 
 
   </Grid>

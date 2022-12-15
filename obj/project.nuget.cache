@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "jof/5QkF8p6HJwj4pWoHGNIHaq5MO2LEufGteO8TL1Uzv2sMxBTJJKm4/oq3QqGztJ9PiADay3dREC8IqtOUiw==",
+  "dgSpecHash": "D/swjuAEk+pkmZlzst1BYADRSu6udiCWF9vkZO8G8dmBpqrzobLJ6Ozp5bkAhwjT36e+NJPzJ/oaPhHDCCdtfQ==",
   "success": true,
   "projectFilePath": "C:\\Exercise Files\\WPF\\Ex_Files_WPF_1_Desktop\\Exercise Files\\02_CreateApp\\02_Create\\ClassLibrary2\\ExcelProject\\ExcelProject.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\Raghu Ramani\\.nuget\\packages\\mathnet.numerics.signed\\4.15.0\\mathnet.numerics.signed.4.15.0.nupkg.sha512",
     "C:\\Users\\Raghu Ramani\\.nuget\\packages\\microsoft.io.recyclablememorystream\\2.2.0\\microsoft.io.recyclablememorystream.2.2.0.nupkg.sha512",
     "C:\\Users\\Raghu Ramani\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Raghu Ramani\\.nuget\\packages\\microsoft.office.interop.outlook\\15.0.4797.1003\\microsoft.office.interop.outlook.15.0.4797.1003.nupkg.sha512",
     "C:\\Users\\Raghu Ramani\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
     "C:\\Users\\Raghu Ramani\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.31\\microsoft.xaml.behaviors.wpf.1.1.31.nupkg.sha512",
     "C:\\Users\\Raghu Ramani\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
@@ -37,6 +38,16 @@
     "C:\\Users\\Raghu Ramani\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512"
   ],
   "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.Office.Interop.Outlook 15.0.4797.1003' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.Office.Interop.Outlook",
+      "targetGraphs": [
+        "net6.0-windows7.0"
+      ]
+    },
     {
       "code": "NU1701",
       "level": "Warning",
