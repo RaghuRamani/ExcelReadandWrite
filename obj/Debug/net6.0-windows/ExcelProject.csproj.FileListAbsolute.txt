@@ -56,3 +56,6 @@ C:\Exercise Files\WPF\Ex_Files_WPF_1_Desktop\Exercise Files\02_CreateApp\02_Crea
 C:\Exercise Files\WPF\Ex_Files_WPF_1_Desktop\Exercise Files\02_CreateApp\02_Create\ClassLibrary2\ExcelProject\obj\Debug\net6.0-windows\ref\ExcelProject.dll
 C:\Exercise Files\WPF\Ex_Files_WPF_1_Desktop\Exercise Files\02_CreateApp\02_Create\ClassLibrary2\ExcelProject\bin\Debug\net6.0-windows\Office.dll
 C:\Exercise Files\WPF\Ex_Files_WPF_1_Desktop\Exercise Files\02_CreateApp\02_Create\ClassLibrary2\ExcelProject\bin\Debug\net6.0-windows\Microsoft.Office.Interop.Excel.dll
+C:\Exercise Files\WPF\Ex_Files_WPF_1_Desktop\Exercise Files\02_CreateApp\02_Create\ClassLibrary2\ExcelProject\obj\Debug\net6.0-windows\View\Email.g.cs
+C:\Exercise Files\WPF\Ex_Files_WPF_1_Desktop\Exercise Files\02_CreateApp\02_Create\ClassLibrary2\ExcelProject\obj\Debug\net6.0-windows\View\Email.baml
+C:\Exercise Files\WPF\Ex_Files_WPF_1_Desktop\Exercise Files\02_CreateApp\02_Create\ClassLibrary2\ExcelProject\bin\Debug\net6.0-windows\Microsoft.Office.Interop.Outlook.dll

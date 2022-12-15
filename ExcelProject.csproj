@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Office.Interop.Outlook" Version="15.0.4797.1003" />
     <PackageReference Include="NPOI" Version="2.6.0" />
     <PackageReference Include="NPOI.Excel" Version="2.1.1" />
     <PackageReference Include="NUnit" Version="3.13.3" />
@@ -19,6 +20,8 @@
   <ItemGroup>
     <Reference Include="Microsoft.Office.Interop.Outlook">
       <HintPath>..\..\..\..\..\..\..\..\Users\Raghu Ramani\.nuget\packages\microsoft.office.interop.outlook\15.0.4420.1017\lib\net20\Microsoft.Office.Interop.Outlook.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
   </ItemGroup>
 
